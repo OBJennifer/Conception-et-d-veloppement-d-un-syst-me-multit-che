@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "author": "Firoz",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": -483.9,
+      "left": -409.5,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -504.1, "left": -485, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -627.2,
+      "left": -71.2,
+      "attrs": { "pins": "i2c", "i2cAddress": "0x27", "background": "blue", "color": "black" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd2",
+      "top": -483.2,
+      "left": -71.2,
+      "attrs": { "pins": "i2c", "i2cAddress": "0x28", "background": "blue", "color": "black" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd3",
+      "top": -329.6,
+      "left": -61.6,
+      "attrs": { "pins": "i2c", "i2cAddress": "0x29", "background": "blue", "color": "black" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -419.2,
+      "left": -901.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -879.2,
+      "left": -573.78,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:VIN", "bb1:21b.j", "red", [ "h-9.6", "v96" ] ],
+    [ "esp:GND.1", "bb1:20b.j", "black", [ "h18.9", "v19.1" ] ],
+    [ "esp:D21", "bb1:15b.j", "green", [ "h18.9", "v66.8" ] ],
+    [ "esp:D22", "bb1:13b.j", "blue", [ "h28.5", "v57.3" ] ],
+    [ "lcd1:SDA", "bb1:15b.i", "green", [ "h-57.6", "v201.8" ] ],
+    [ "lcd2:SDA", "bb1:15b.h", "green", [ "h-86.4", "v48.2" ] ],
+    [ "lcd3:SDA", "bb1:15b.g", "green", [ "h0" ] ],
+    [ "lcd1:SCL", "bb1:13b.i", "green", [ "h-268.8", "v163.5" ] ],
+    [ "lcd2:SCL", "bb1:13b.g", "green", [ "h-19.2", "v48.3" ] ],
+    [ "lcd3:SCL", "bb1:13b.f", "green", [ "h0" ] ],
+    [ "lcd2:VCC", "bb1:21b.i", "red", [ "h-153.6", "v115.3" ] ],
+    [ "lcd3:VCC", "bb1:21b.h", "red", [ "h0" ] ],
+    [ "lcd1:VCC", "bb1:21b.g", "red", [ "h0" ] ],
+    [ "lcd1:GND", "bb1:20b.i", "black", [ "h0" ] ],
+    [ "lcd2:GND", "bb1:20b.h", "black", [ "h0" ] ],
+    [ "lcd3:GND", "bb1:20b.g", "black", [ "h0" ] ],
+    [ "pir1:VCC", "esp:VIN", "red", [ "v0" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "pir1:OUT", "esp:D27", "green", [ "v0" ] ],
+    [ "ldr1:VCC", "esp:GND.2", "red", [ "h124.8", "v48.1" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h96", "v28.4", "h153.6" ] ],
+    [ "ldr1:AO", "esp:D33", "green", [ "v18.5", "h19.2", "v-67.2" ] ]
+  ],
+  "dependencies": {}
+}
